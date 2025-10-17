@@ -1,0 +1,15 @@
+.section-title {
+  column-gap: 0.3rem;
+
+  & .title {
+    font-size: 16px;
+    color: #090909;
+    font-family: "Open Sans", sans-serif;
+  }
+
+  & .bar {
+    min-width: 4px;
+    min-height: 12px;
+    background-color: #00498c;
+  }
+}

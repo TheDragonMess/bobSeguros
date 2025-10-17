@@ -1,0 +1,37 @@
+// Library styles
+@import "~bootstrap/scss/bootstrap";
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap");
+
+// Component styles
+@import "containers/styles.scss";
+@import "components/styles.scss";
+
+body,
+html,
+#root {
+  font-size: 13px;
+  overflow: hidden;
+  scrollbar-color: auto;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* For Firefox */
+.main-box {
+  scrollbar-width: thin;
+  scrollbar-color: #4178aa #f1f1f1;
+}
+
+.separator {
+  z-index: 1;
+  position: relative;
+  background-color: #d9d9d9;
+}
+
+.section-name {
+  color: #999999;
+  font-weight: 700;
+  margin-bottom: 0.65rem;
+  text-transform: uppercase;
+  font-family: "Open Sans", sans-serif;
+}

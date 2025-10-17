@@ -1,0 +1,23 @@
+%faqs_list {
+  & .faq-list {
+    & .wrapper {
+      padding-top: 0.85rem;
+      padding-left: 1.35rem;
+      padding-bottom: 0.85rem;
+
+      & span {
+        font-size: 13px;
+        font-weight: 300;
+        line-height: 19px;
+      }
+
+      & .faq-answer {
+        width: 25%;
+      }
+
+      & .faq-question {
+        width: 75%;
+      }
+    }
+  }
+}

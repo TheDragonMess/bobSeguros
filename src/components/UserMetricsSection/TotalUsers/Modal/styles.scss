@@ -1,0 +1,14 @@
+.total-users-modal {
+  & .modal-content {
+    min-width: 300px !important;
+    max-width: 300px !important;
+
+    & .content {
+      @extend %userMetricsSection_totalUsers;
+
+      & .total-users {
+        font-size: 82px !important;
+      }
+    }
+  }
+}

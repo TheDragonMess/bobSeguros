@@ -1,0 +1,42 @@
+%statsSection_stats {
+  & .stat-list {
+    margin-bottom: 1.25rem;
+
+    & .stat-item {
+      & .wrapper {
+        padding-top: 0.85rem;
+        padding-left: 1.35rem;
+        padding-bottom: 0.85rem;
+
+        & .stat-label {
+          word-break: break-word;
+        }
+
+        & span {
+          font-size: 13px;
+          font-weight: 300;
+          line-height: 19px;
+        }
+
+        & .box,
+        & .ai-box,
+        & .user-box,
+        & .stat-label-box {
+          width: 50%;
+        }
+
+        & .ai-box,
+        & .user-box {
+          column-gap: 0.25rem;
+
+          & svg {
+            min-width: 12px;
+            max-width: 12px;
+            min-height: 12px;
+            max-height: 12px;
+          }
+        }
+      }
+    }
+  }
+}

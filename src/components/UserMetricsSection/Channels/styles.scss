@@ -1,0 +1,47 @@
+// Styles
+@import "Modal/styles.scss";
+
+%channelsPercentages {
+  & .percentages-box {
+    & .separator {
+      min-width: 1px;
+      min-height: 50px;
+      max-height: 50px;
+      background-color: #d9d9d9;
+    }
+
+    & .channels-item {
+      row-gap: 0.3rem;
+      padding: 0.25rem 2.15rem 0;
+      text-align: center;
+
+      &:first-of-type {
+        padding-left: 0;
+      }
+
+      &:last-of-type {
+        padding-right: 0;
+      }
+
+      & .label {
+        font-size: 14px;
+        color: #090909;
+      }
+
+      & .percentage {
+        font-size: 35px;
+        line-height: 38px;
+        color: #00498c;
+      }
+    }
+  }
+}
+
+%userMetricsSection_channels {
+  & .channels-box {
+    width: 48%;
+    row-gap: 1.15rem;
+
+    @extend %channelsPercentages;
+  }
+}

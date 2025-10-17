@@ -1,0 +1,5 @@
+.avg-duration-modal {
+  & .content {
+    @extend %avgDuration;
+  }
+}

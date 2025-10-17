@@ -1,0 +1,14 @@
+.nps-modal {
+  & .modal-content {
+    min-width: 300px !important;
+    max-width: 300px !important;
+
+    & .content {
+      & .nps {
+        font-size: 75px;
+        color: #00498c;
+        line-height: 65px;
+      }
+    }
+  }
+}

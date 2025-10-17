@@ -1,0 +1,10 @@
+// Styles
+@import "FAQList/styles.scss";
+@import "FAQsSelect/styles.scss";
+
+%statsSection_faqs {
+  & .faqs-section {
+    @extend %faqs_list;
+    @extend %faqs_faqsSelect;
+  }
+}

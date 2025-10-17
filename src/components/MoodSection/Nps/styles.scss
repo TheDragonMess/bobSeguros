@@ -1,0 +1,13 @@
+// Styles
+@import "Modal/styles.scss";
+
+%nps {
+  & .nps-box {
+    right: 0;
+    top: -28px;
+    color: #ffffff;
+    min-height: 28px;
+    padding: 0.3rem 0.75rem;
+    background-color: #000000;
+  }
+}

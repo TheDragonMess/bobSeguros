@@ -1,0 +1,12 @@
+.message-box {
+  padding: 1.25rem;
+  background-color: #f8f8f8;
+
+  & .message {
+    margin: auto;
+    max-width: 95%;
+    font-size: 13px;
+    color: #090909;
+    line-height: 19px;
+  }
+}

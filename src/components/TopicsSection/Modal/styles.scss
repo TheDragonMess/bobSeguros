@@ -1,0 +1,17 @@
+.topics-modal {
+  & .modal-content {
+    min-width: 400px !important;
+    max-width: 400px !important;
+
+    & .content {
+      @extend %topicsSection_topics;
+
+      & .message-box {
+        & .message {
+          max-width: 80%;
+          margin: auto !important;
+        }
+      }
+    }
+  }
+}

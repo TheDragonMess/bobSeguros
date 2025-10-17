@@ -1,0 +1,238 @@
+{
+  "status": "success",
+  "data": {
+    "nps": "21",
+    "avg": {
+      "status": "high",
+      "duration": "10 min"
+    },
+    "totalUsers": {
+      "total": 200,
+      "status": "warning"
+    },
+    "channels": {
+      "web": 120,
+      "whatsapp": 65,
+      "appMobile": 15
+    },
+    "actions": [
+      {
+        "_id": "action-1",
+        "label": "No necesita el servicio"
+      },
+      {
+        "_id": "action-2",
+        "label": "No necesita el servicio"
+      },
+      {
+        "_id": "action-3",
+        "label": "No necesita el servicio"
+      },
+      {
+        "_id": "action-4",
+        "label": "No necesita el servicio"
+      },
+      {
+        "_id": "action-5",
+        "label": "No necesita el servicio"
+      },
+      {
+        "_id": "action-6",
+        "label": "No necesita el servicio"
+      },
+      {
+        "_id": "action-7",
+        "label": "No necesita el servicio"
+      },
+      {
+        "_id": "action-8",
+        "label": "No necesita el servicio"
+      },
+      {
+        "_id": "action-9",
+        "label": "No necesita el servicio"
+      },
+      {
+        "_id": "action-10",
+        "label": "No necesita el servicio"
+      }
+    ],
+    "topics": [
+      {
+        "_id": "topic-1",
+        "label": "No necesita el servicio"
+      },
+      {
+        "_id": "topic-2",
+        "label": "No necesita el servicio"
+      },
+      {
+        "_id": "topic-3",
+        "label": "No necesita el servicio"
+      },
+      {
+        "_id": "topic-4",
+        "label": "No necesita el servicio"
+      },
+      {
+        "_id": "topic-5",
+        "label": "No necesita el servicio"
+      },
+      {
+        "_id": "topic-6",
+        "label": "No necesita el servicio"
+      },
+      {
+        "_id": "topic-7",
+        "label": "No necesita el servicio"
+      },
+      {
+        "_id": "topic-8",
+        "label": "No necesita el servicio"
+      },
+      {
+        "_id": "topic-9",
+        "label": "No necesita el servicio"
+      },
+      {
+        "_id": "topic-10",
+        "label": "No necesita el servicio"
+      }
+    ],
+    "moods": [
+      {
+        "_id": "mood-1",
+        "label": "Enojado",
+        "percentage": 2,
+        "exceeded": false
+      },
+      {
+        "_id": "mood-2",
+        "label": "Insatisfecho",
+        "exceeded": false,
+        "percentage": 14
+      },
+      {
+        "_id": "mood-3",
+        "exceeded": true,
+        "percentage": 58,
+        "label": "Satisfecho"
+      },
+      {
+        "_id": "mood-4",
+        "label": "Conforme",
+        "percentage": 40,
+        "exceeded": false
+      },
+      {
+        "_id": "mood-5",
+        "label": "Desconforme",
+        "percentage": 5,
+        "exceeded": false
+      }
+    ],
+    "stats": [
+      {
+        "_id": "stat-1",
+        "label": "Tiempo de respuesta",
+        "ai": "1 min",
+        "user": "2 min"
+      },
+      {
+        "_id": "stat-2",
+        "label": "Calidad de respuesta",
+        "ai": "Low",
+        "user": "Med"
+      }
+    ],
+    "outcomeStats": [
+      {
+        "_id": "outcome-stat-1",
+        "label": "Resueltos",
+        "slug": "resolved",
+        "ai": {
+          "total": 100,
+          "percentage": 25
+        },
+        "user": {
+          "total": 100,
+          "percentage": 25
+        }
+      },
+      {
+        "_id": "outcome-stat-2",
+        "label": "Abandonados",
+        "slug": "abandoned",
+        "ai": {
+          "total": 100,
+          "percentage": 25
+        },
+        "user": {
+          "total": 100,
+          "percentage": 25
+        }
+      },
+      {
+        "_id": "outcome-stat-3",
+        "label": "Desambiguación",
+        "slug": "disambiguation",
+        "ai": {
+          "total": 100,
+          "percentage": 25
+        },
+        "user": {
+          "total": 100,
+          "percentage": 25
+        }
+      },
+      {
+        "_id": "outcome-stat-4",
+        "label": "Derivaciones",
+        "slug": "derivations",
+        "ai": {
+          "total": 100,
+          "percentage": 25
+        },
+        "user": {
+          "total": 100,
+          "percentage": 25
+        }
+      },
+      {
+        "_id": "outcome-stat-5",
+        "label": "Alucinaciones",
+        "slug": "hallucinations",
+        "ai": {
+          "total": 100,
+          "percentage": 25
+        },
+        "user": {
+          "total": 100,
+          "percentage": 25
+        }
+      }
+    ],
+    "faqs": [
+      {
+        "_id": "faq-1",
+        "answer": "Med",
+        "question": "¿Cuánto tiempo dura el seguro?"
+      },
+      {
+        "_id": "faq-2",
+        "answer": "Med",
+        "question": "¿Cuánto tiempo dura el seguro?"
+      },
+      {
+        "_id": "faq-3",
+        "answer": "Med",
+        "question": "¿Cuánto tiempo dura el seguro?"
+      },
+      {
+        "_id": "faq-4",
+        "answer": "Med",
+        "question": "¿Cuánto tiempo dura el seguro?"
+      }
+    ]
+  }
+}

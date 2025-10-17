@@ -1,0 +1,8 @@
+// Styles
+@import "MoodBar/styles.scss";
+
+%moodBars {
+  & .mood-bars {
+    @extend %moodBar;
+  }
+}

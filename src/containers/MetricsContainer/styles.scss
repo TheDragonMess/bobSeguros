@@ -1,0 +1,16 @@
+.metrics-container {
+  padding: 1.85rem 1.25rem;
+
+  & > .box {
+    max-width: 1200px;
+
+    & .left-aside {
+      width: 70%;
+      row-gap: 1.25rem;
+    }
+
+    & .right-aside {
+      width: 30%;
+    }
+  }
+}

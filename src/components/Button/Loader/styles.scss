@@ -1,0 +1,100 @@
+.btn-loader {
+  width: 6px;
+  height: 6px;
+  margin: auto;
+  border-radius: 50%;
+  display: block;
+  position: relative;
+  background-color: #ffffff;
+  box-shadow:
+    16px 0 #ffffff,
+    -16px 0 #ffffff;
+  animation: flash 0.5s ease-out infinite alternate;
+}
+
+@keyframes flash {
+  0% {
+    background-color: #fff2;
+    box-shadow:
+      16px 0 #fff2,
+      -16px 0 #ffffff;
+  }
+
+  50% {
+    background-color: #ffffff;
+    box-shadow:
+      16px 0 #fff2,
+      -16px 0 #fff2;
+  }
+
+  100% {
+    background-color: #fff2;
+    box-shadow:
+      16px 0 #ffffff,
+      -16px 0 #fff2;
+  }
+}
+
+div.dark .btn-loader,
+button.dark .btn-loader {
+  background-color: #000000;
+  box-shadow:
+    16px 0 #000000,
+    -16px 0 #000000;
+  animation: flashBlack 0.5s ease-out infinite alternate;
+}
+
+@keyframes flashBlack {
+  0% {
+    background-color: #fff2;
+    box-shadow:
+      16px 0 #fff2,
+      -16px 0 #000000;
+  }
+
+  50% {
+    background-color: #000000;
+    box-shadow:
+      16px 0 #fff2,
+      -16px 0 #fff2;
+  }
+
+  100% {
+    background-color: #fff2;
+    box-shadow:
+      16px 0 #000000,
+      -16px 0 #fff2;
+  }
+}
+
+div.blue .btn-loader,
+button.blue .btn-loader {
+  background-color: #2f80ed;
+  box-shadow:
+    16px 0 #2f80ed,
+    -16px 0 #2f80ed;
+  animation: flashBlue 0.5s ease-out infinite alternate;
+}
+
+@keyframes flashBlue {
+  0% {
+    background-color: #fff2;
+    box-shadow:
+      16px 0 #fff2,
+      -16px 0 #2f80ed;
+  }
+
+  50% {
+    background-color: #2f80ed;
+    box-shadow:
+      16px 0 #fff2,
+      -16px 0 #fff2;
+  }
+
+  100% {
+    background-color: #fff2;
+    box-shadow:
+      16px 0 #2f80ed,
+      -16px 0 #fff2;
+  }
+}

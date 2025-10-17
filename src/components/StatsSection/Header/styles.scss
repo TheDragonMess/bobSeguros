@@ -1,0 +1,31 @@
+%statsSection_headerIcons {
+  & .icon-box {
+    & svg {
+      min-width: 30px;
+      max-width: 30px;
+      min-height: 30px;
+      max-height: 30px;
+    }
+
+    &:last-of-type {
+      & svg {
+        min-width: 32px;
+        max-width: 32px;
+        min-height: 32px;
+        max-height: 32px;
+      }
+    }
+  }
+}
+
+%statsSection_header {
+  & .stats-header {
+    padding: 0.65rem 0 0 1.35rem;
+
+    @extend %statsSection_headerIcons;
+
+    & .section-title {
+      width: 50%;
+    }
+  }
+}

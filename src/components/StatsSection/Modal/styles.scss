@@ -1,0 +1,63 @@
+// Mixins
+@import "../../../mixins/modal-scrollbar.scss";
+
+.stats-modal {
+  &.with-scrollbar {
+    & .title-box,
+    & .title-separator-box {
+      margin-right: 1.5rem !important;
+    }
+  }
+
+  & .modal-content {
+    min-width: 400px !important;
+    max-width: 400px !important;
+
+    & .content {
+      padding-top: 1.5rem;
+      padding-right: 0.75rem !important;
+
+      & .title-box {
+        @extend %statsSection_headerIcons;
+      }
+
+      & .title-box,
+      & .title-separator-box {
+        margin-right: 0.75rem;
+      }
+
+      & .scrollbar-box {
+        overflow-y: auto;
+        padding-right: 0.75rem;
+        max-height: calc(100vh - 6.85rem);
+
+        @extend %modalScrollbar;
+        @extend %statsSection_faqs;
+        @extend %statsSection_stats;
+        @extend %statsSection_separator;
+        @extend %statsSection_outcomeStats;
+
+        & .faqs-select {
+          margin-left: 0 !important;
+          margin-right: 0 !important;
+        }
+
+        & .faq-item,
+        & .stat-item,
+        & .outcome-stat-item {
+          & .wrapper {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+          }
+        }
+
+        & .message-box {
+          & .message {
+            max-width: 80%;
+            margin: auto !important;
+          }
+        }
+      }
+    }
+  }
+}

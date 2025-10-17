@@ -1,0 +1,49 @@
+%moodBar {
+  & .mood-bar {
+    width: 25%;
+    height: 200px;
+    min-height: 200px;
+
+    & .separator {
+      right: 0px;
+      min-width: 1px;
+      min-height: 90%;
+      background-color: transparent;
+      border-left: 2px dashed #e5e5ea;
+    }
+
+    & .mood-box {
+      color: #090909;
+      row-gap: 0.35rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+
+      & .bar-box {
+        margin-bottom: 0.15rem;
+
+        & .bar {
+          min-width: 3px;
+          margin-top: -4px;
+        }
+
+        & .circle {
+          z-index: 10;
+          min-width: 10px;
+          max-width: 10px;
+          min-height: 10px;
+          max-height: 10px;
+          border-radius: 999px;
+          background-color: #00498c;
+
+          &.active {
+            background-color: #ff123f !important;
+          }
+        }
+
+        & .bar {
+          background-color: #000000;
+        }
+      }
+    }
+  }
+}

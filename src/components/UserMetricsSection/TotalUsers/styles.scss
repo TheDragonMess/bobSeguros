@@ -1,0 +1,20 @@
+// Styles
+@import "Modal/styles.scss";
+
+%totalUsers {
+  & .total-users {
+    font-size: 75px;
+    color: #00498c;
+    line-height: 65px;
+    text-align: center;
+  }
+}
+
+%userMetricsSection_totalUsers {
+  & .total-users-box {
+    width: 25%;
+    row-gap: 0.85rem;
+
+    @extend %totalUsers;
+  }
+}

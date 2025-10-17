@@ -1,0 +1,20 @@
+%topicsSection_topics {
+  & .topics-box {
+    width: 50%;
+    row-gap: 1rem;
+
+    & .topic-list {
+      column-gap: 10px;
+      gap: 0.75rem 1.5rem;
+      grid-auto-flow: column;
+      list-style-position: inside;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(5, auto);
+
+      & .topic-item {
+        color: #090909;
+        font-family: "Open Sans", sans-serif;
+      }
+    }
+  }
+}

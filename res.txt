@@ -1,0 +1,36 @@
+{
+  "status": "success",
+  "analytics": {
+    "tenant": "acme_corp",
+
+    "num_sessions": 1,
+
+    "unique_users": 1, /// totalUsers.total  =======================
+
+    "num_active_sessions": 0,
+
+    "chat_average_duration": -43.0, // avg.duration ===========================
+
+    "sessions_by_channel": {
+      "Web chat": 1            ////  channels.web  ================
+
+    },
+    "sentiments": {       //////// Moods  ==============================
+      "indifferent": 1
+    },
+    "topics": {     ////////// Topics
+      "saludo": 1,
+      "presentación": 1
+    },
+    "trends": {            /////////////actions
+      "Natalia Oreiro": 1,
+      "Hola": 1
+    },
+    "chat_ended_actions": {
+      "": 1
+    },
+    "unanswered_questions": {
+      "": 1
+    }
+  }
+}

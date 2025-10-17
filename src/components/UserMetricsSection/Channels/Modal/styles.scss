@@ -1,0 +1,15 @@
+.channels-modal {
+  & .content {
+    @extend %channelsPercentages;
+
+    & .channels-item {
+      & .label {
+        font-size: 13px !important;
+      }
+
+      & .percentage {
+        font-size: 40px !important;
+      }
+    }
+  }
+}

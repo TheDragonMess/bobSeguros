@@ -1,0 +1,40 @@
+// Styles
+@import "Modal/styles.scss";
+@import "Topics/styles.scss";
+
+.topics-section {
+  background-color: #f8f8f8;
+  padding: 1.65rem 1.85rem 1.9rem 1.5rem;
+
+  @extend %topicsSection_topics;
+
+  & .topics-box {
+    &:first-of-type {
+      padding-right: 1.5rem;
+    }
+
+    &:last-of-type {
+      padding-left: 1.5rem;
+
+      & .section-title {
+        margin-left: auto;
+      }
+
+      & .topic-list {
+        justify-content: end;
+
+        & .topic-item {
+          text-align: right;
+        }
+      }
+    }
+  }
+
+  & .separator {
+    top: 50%;
+    left: 50%;
+    min-width: 1px;
+    height: calc(85% - 2rem);
+    transform: translateY(-50%);
+  }
+}

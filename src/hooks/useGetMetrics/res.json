@@ -1,0 +1,110 @@
+{
+  "status": "success",
+  "analytics": {
+    "tenant": "acme_corp",
+    "num_sessions": 1,
+    "unique_users": 1,
+    "num_active_sessions": 0,
+    "chat_average_duration": -43.0,
+    "sessions_by_channel": {
+      "Web chat": 1
+    },
+    "sentiments": {
+      "indifferent": 1
+    },
+    "topics": {
+      "saludo": 1,
+      "presentación": 1
+    },
+    "trends": {
+      "Natalia Oreiro": 1,
+      "Hola": 1
+    },
+    "chat_ended_actions": {
+      "": 1
+    },
+    "unanswered_questions": {
+      "": 1
+    }
+  }
+}
+
+{
+    "event": {
+        "name": "message_received"
+    },
+    "options": {},
+    "payload": {
+        "context": {
+            "global_": {
+                "session_id": "f401165e-248f-43ac-a203-f5543868091b",
+                "system": {
+                    "user_id": "anonymous_IBMuid-17b58325-1009-413a-900f-c86851ff5707",
+                    "timezone": "America/Lima"
+                }
+            },
+            "integrations": {
+                "channel": {
+                    "name": "Web chat",
+                    "private": {
+                        "session": {
+                            "current_page_url": "https://web-chat.global.assistant.watson.appdomain.cloud/preview.html"
+                        },
+                        "user": {
+                            "id": "anonymous_IBMuid-17b58325-1009-413a-900f-c86851ff5707"
+                        }
+                    }
+                },
+                "chat": {
+                    "browser_info": {
+                        "browser_OS": "Android OS",
+                        "browser_name": "chrome",
+                        "browser_version": "138.0.0",
+                        "client_ip_address": "179.6.137.164",
+                        "ip_address_list": [
+                            "179.6.137.164",
+                            " 179.6.238.149",
+                            "10.63.243.130",
+                            " 172.30.126.226"
+                        ],
+                        "language": "es-419",
+                        "page_url": "https://web-chat.global.assistant.watson.appdomain.cloud/preview.html",
+                        "screen_resolution": "width: 412, height: 915",
+                        "user_agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36"
+                    }
+                }
+            },
+            "skills": {
+                "actions_skill": null,
+                "main_skill": null,
+                "actions skill": {
+                    "system": {},
+                    "user_defined": {}
+                },
+                "main skill": {
+                    "system": {},
+                    "user_defined": {}
+                }
+            }
+        },
+        "input": {
+            "message_type": "text",
+            "options": {
+                "alternate_responses": true,
+                "async_callout": true,
+                "debug": true,
+                "disambiguation": {
+                    "alternate_responses": true
+                },
+                "export": true,
+                "return_context": true,
+                "suggestion_only": false
+            },
+            "source": {
+                "id": "anonymous_IBMuid-17b58325-1009-413a-900f-c86851ff5707",
+                "type": "user"
+            },
+            "text": ""
+        }
+    }
+}

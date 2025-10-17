@@ -1,0 +1,59 @@
+.form-control-container {
+  & .input-label {
+    font-weight: 600;
+    color: #4f4f4f;
+  }
+
+  & > .form-control {
+    min-height: 30px;
+    box-shadow: none;
+    border-radius: 0 !important;
+    border-width: 1px !important;
+    border-style: solid !important;
+
+    &::placeholder,
+    &::-ms-input-placeholder {
+      color: #bdbdbd;
+    }
+
+    &:disabled {
+      color: #959595 !important;
+      background-color: #f8f8f8 !important;
+    }
+
+    &,
+    &:focus {
+      border-color: #bdbdbd !important;
+      background-color: #ffffff !important;
+    }
+
+    &.input-has-error {
+      &,
+      &:focus {
+        box-shadow: inset 0 0 0 1px #df2d24 !important;
+      }
+    }
+  }
+
+  & .btn-tooltip {
+    min-width: initial;
+    min-height: initial;
+    margin-left: 0.35rem;
+    background-color: transparent;
+  }
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield !important;
+  appearance: textfield;
+
+  &:invalid {
+    border-color: #c3c3c3;
+  }
+}

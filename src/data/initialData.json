@@ -1,0 +1,255 @@
+{
+  "status": "success",
+  "data": {
+    "nps": "21",
+    "avg": {
+      "status": "high",
+      "duration": 27
+    },
+    "totalUsers": {
+      "total": 33,
+      "status": "warning"
+    },
+    "channels": {
+      "web": 11,
+      "whatsapp": 9,
+      "appMobile": 12
+    },
+    "actions": [
+      {
+        "_id": "1",
+        "label": "Actualización Datos"
+      },
+      {
+        "_id": "2",
+        "label": "Actualización Datos"
+      },
+      {
+        "_id": "3",
+        "label": "Actualización Datos"
+      },
+      {
+        "_id": "4",
+        "label": "Asistencia Carretera"
+      },
+      {
+        "_id": "5",
+        "label": "Asistencia Carretera"
+      },
+      {
+        "_id": "6",
+        "label": "Cotización"
+      },
+      {
+        "_id": "7",
+        "label": "Asistencia Carretera"
+      },
+      {
+        "_id": "8",
+        "label": "Reclamo"
+      },
+      {
+        "_id": "9",
+        "label": "Actualización Datos"
+      },
+      {
+        "_id": "10",
+        "label": "Reclamo"
+      }
+    ],
+    "topics": [
+      {
+        "_id": "01",
+        "label": "SOAT"
+      },
+      {
+        "_id": "20",
+        "label": "Seguro de Vida"
+      },
+      {
+        "_id": "03",
+        "label": "SOAT"
+      },
+      {
+        "_id": "04",
+        "label": "Seguro de Vida"
+      },
+      {
+        "_id": "05",
+        "label": "Precios"
+      },
+      {
+        "_id": "06",
+        "label": "Cobertura de Salud"
+      },
+      {
+        "_id": "07",
+        "label": "Precios"
+      },
+      {
+        "_id": "08",
+        "label": "SOAT"
+      },
+      {
+        "_id": "09",
+        "label": "Precios"
+      },
+      {
+        "_id": "020",
+        "label": "Precios"
+      },
+      {
+        "_id": "011",
+        "label": "SOAT"
+      },
+      {
+        "_id": "012",
+        "label": "Seguro de Vida"
+      },
+      {
+        "_id": "013",
+        "label": "Reembolsos"
+      }
+    ],
+    "moods": [
+      {
+        "_id": "0001",
+        "label": "Enojado",
+        "percentage": 2,
+        "exceeded": false
+      },
+      {
+        "_id": "0002",
+        "label": "Insatisfecho",
+        "exceeded": false,
+        "percentage": 14
+      },
+      {
+        "_id": "0003",
+        "exceeded": true,
+        "percentage": 18,
+        "label": "Satisfecho"
+      },
+      {
+        "_id": "0004",
+        "label": "Conforme",
+        "percentage": 40,
+        "exceeded": false
+      },
+      {
+        "_id": "0005",
+        "label": "Desconforme",
+        "percentage": 5,
+        "exceeded": false
+      }
+    ],
+    "stats": [
+      {
+        "_id": "stat-1",
+        "label": "Tiempo de respuesta",
+        "ai": "1 min",
+        "user": "2 min"
+      },
+      {
+        "_id": "stat-2",
+        "label": "Calidad de respuesta",
+        "ai": "Low",
+        "user": "Med"
+      }
+    ],
+    "outcomeStats": [
+      {
+        "_id": "outcome-stat-1",
+        "label": "Resueltos",
+        "slug": "resolved",
+        "ai": {
+          "total": 4,
+          "percentage": 20
+        },
+        "user": {
+          "total": 3,
+          "percentage": 30
+        }
+      },
+      {
+        "_id": "outcome-stat-2",
+        "label": "Abandonados",
+        "slug": "abandoned",
+        "ai": {
+          "total": 3,
+          "percentage": 15
+        },
+        "user": {
+          "total": 4,
+          "percentage": 20
+        }
+      },
+      {
+        "_id": "outcome-stat-3",
+        "label": "Desambiguación",
+        "slug": "disambiguation",
+        "ai": {
+          "total": 2,
+          "percentage": 25
+        },
+        "user": {
+          "total": 3,
+          "percentage": 15
+        }
+      },
+      {
+        "_id": "outcome-stat-4",
+        "label": "Derivaciones",
+        "slug": "derivations",
+        "ai": {
+          "total": 2,
+          "percentage": 15
+        },
+        "user": {
+          "total": 4,
+          "percentage": 20
+        }
+      },
+      {
+        "_id": "outcome-stat-5",
+        "label": "Alucinaciones",
+        "slug": "hallucinations",
+        "ai": {
+          "total": 5,
+          "percentage": 25
+        },
+        "user": {
+          "total": 2,
+          "percentage": 10
+        }
+      }
+    ],
+    "faqs": [
+      {
+        "_id": "faq-1",
+        "answer": "Hig",
+        "question": "¿Qué tipos de seguros ofrece la compañía?"
+      },
+      {
+        "_id": "faq-2",
+        "answer": "Med",
+        "question": "¿Cómo puedo cotizar un seguro?"
+      },
+      {
+        "_id": "faq-3",
+        "answer": "Med",
+        "question": "¿Qué cubre y qué no cubre mi seguro?"
+      },
+      {
+        "_id": "faq-4",
+        "answer": "Med",
+        "question": "¿Qué documentos necesito para presentar un reclamo?"
+      },
+      {
+        "_id": "faq-5",
+        "answer": "Med",
+        "question": "¿Dónde puedo descargar o consultar mi póliza vigente?"
+      }
+    ]
+  }
+}

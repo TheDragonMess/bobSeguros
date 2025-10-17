@@ -1,0 +1,10 @@
+// Styles
+@import "OutcomeStat/styles.scss";
+
+%statsSection_outcomeStats {
+  & .outcome-stat-list {
+    margin-bottom: 1.5rem;
+
+    @extend %outcomeStats_outcomeStat;
+  }
+}
