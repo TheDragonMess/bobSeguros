@@ -1,0 +1,19 @@
+:8080 {
+  root * /srv
+
+  # Serve runtime config with no-cache
+  @config path /config.js
+  header @config Cache-Control "no-store"
+
+  # Basic security headers (optional but recommended)
+  header {
+    X-Content-Type-Options "nosniff"
+    Referrer-Policy "strict-origin-when-cross-origin"
+    X-Frame-Options "DENY"
+    Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  }
+
+  # SPA fallback
+  try_files {path} /index.html
+  file_server
+}

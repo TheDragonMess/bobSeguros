@@ -1,127 +1,115 @@
-import { useState, useEffect, useCallback } from "react";
-import { transformData } from "../hooks/useGetMetrics/transformData";
+// src/hooks/useFetchApi.js
+import { useState, useEffect, useCallback, useRef } from "react";
+import { transformData } from "../useGetMetrics/transformData";
+import initialData from "../../data/initialData.json";
+import { config } from "../config";
 
-// helper to generate fluctuated sentiments
-function fluctuateSentiments(sentiments) {
-  if (!Array.isArray(sentiments)) return [];
-
-  return sentiments.map((sentiment) => {
-    let { percentage } = sentiment;
-
-    const fluctuationPercent = (Math.random() * (30 - 10) + 10) / 100; // 10–30%
-    const upOrDown = Math.random() > 0.5 ? 1 : -1;
-
-    let newPercentage = Math.round(percentage + percentage * fluctuationPercent * upOrDown);
-
-    // If percentage hits 100, force below 100
-    if (newPercentage >= 100) {
-      newPercentage = Math.max(0, 100 - Math.floor(Math.random() * 7 + 1)); // 95–99
-    }
-
-    // never negative
-    if (newPercentage < 0) newPercentage = 0;
-
-    return {
-      ...sentiment,
-      percentage: newPercentage
-    };
-  });
-}
-
-export default function useFetchApi(endpoint, token, refreshInterval = 0) {
-  const [data, setData] = useState(null); // transformed API data
-  const [fluctuated, setFluctuated] = useState(null); // fake fluctuations
+export default function useFetchApi(endpoint, tokenOverride, refreshInterval = 0) {
+  const [data, setData] = useState(null);
+  const [fluctuated, setFluctuated] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const url = "https://boss-watson.malli.pe";
+  const baseUrl = (config && config.API_URL) || "";
+  const token = tokenOverride || (config && config.API_TOKEN) || "";
+
+  const abortRef = useRef(null);
+  const mountedRef = useRef(true);
+
+  const setFromInitial = () => {
+    const merged = { status: "success", data: initialData.data };
+    setData(merged);
+    setFluctuated(merged.data.moods || []);
+  };
 
   const fetchData = useCallback(async () => {
-    if (!endpoint) return;
+    // If we don’t have base URL yet, just use initialData (no spinner forever)
+    if (!endpoint || !baseUrl) {
+      setError(!endpoint ? "Missing endpoint" : "Missing API base URL");
+      setLoading(false);
+      setFromInitial();
+      return;
+    }
+
+    if (abortRef.current) abortRef.current.abort();
+    const controller = new AbortController();
+    abortRef.current = controller;
 
     setLoading(true);
     setError(null);
 
     try {
-      const response = await fetch(`${url}/${endpoint}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token ? `Bearer ${token}` : undefined
-        }
-      });
+      const url = `${baseUrl.replace(/\/+$/, "")}/${endpoint.replace(/^\/+/, "")}`;
+      const headers = { Accept: "application/json" };
+      if (token) headers.Authorization = `Bearer ${token}`;
 
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status} ${response.statusText}`);
+      const res = await fetch(url, { headers, signal: controller.signal });
+      if (!res.ok) {
+        const msg = await res.text().catch(() => "");
+        throw new Error(`Error ${res.status}: ${res.statusText}${msg ? ` - ${msg}` : ""}`);
       }
 
-      const rawJson = await response.json();
-      const transformed = transformData(rawJson);
+      const raw = await res.json();
+      // let transformData do its job (it already merges into initialData)
+      const transformed = transformData(raw);
+
       setData(transformed);
-      setFluctuated(transformed.data.moods); // initialize fluctuations
+      setFluctuated(transformed?.data?.moods || []);
     } catch (err) {
-      setError(err.message);
+      if (err.name === "AbortError") return;
+      setError(err.message || String(err));
+      setFromInitial(); // <- fallback to initialData on error
     } finally {
       setLoading(false);
     }
-  }, [endpoint, token]);
+  }, [endpoint, baseUrl, token]);
 
-  // Fetch loop
   useEffect(() => {
+    mountedRef.current = true;
     fetchData();
-    let intervalId;
-    if (refreshInterval > 0) {
-      intervalId = setInterval(fetchData, refreshInterval);
-    }
+    let id;
+    if (refreshInterval > 0) id = setInterval(fetchData, refreshInterval);
     return () => {
-      if (intervalId) clearInterval(intervalId);
+      mountedRef.current = false;
+      if (id) clearInterval(id);
+      if (abortRef.current) abortRef.current.abort();
     };
   }, [fetchData, refreshInterval]);
 
-  // Fluctuation loop (500ms) with visibility handling
   useEffect(() => {
-    if (!data?.data.moods) return;
-
-    let intervalId;
-
-    function startFluctuations() {
-      if (!intervalId) {
-        intervalId = setInterval(() => {
-          setFluctuated(fluctuateSentiments(data.data.moods));
-        }, 1000);
+    if (!data?.data?.moods) return;
+    let id;
+    const tick = () => {
+      const src = data.data.moods;
+      if (!Array.isArray(src)) return;
+      const next = src.map((m) => {
+        const p = Number(m.percentage) || 0;
+        const pct = (Math.random() * (30 - 10) + 10) / 100;
+        const dir = Math.random() > 0.5 ? 1 : -1;
+        let np = Math.round(p + p * pct * dir);
+        if (np >= 100) np = 95 + Math.floor(Math.random() * 5);
+        if (np < 0) np = 0;
+        return { ...m, percentage: np };
+      });
+      setFluctuated(next);
+    };
+    const start = () => {
+      if (!id) id = setInterval(tick, 1000);
+    };
+    const stop = () => {
+      if (id) {
+        clearInterval(id);
+        id = null;
       }
-    }
-
-    function stopFluctuations() {
-      if (intervalId) {
-        clearInterval(intervalId);
-        intervalId = null;
-      }
-    }
-
-    function handleVisibilityChange() {
-      if (document.hidden) {
-        stopFluctuations();
-      } else {
-        startFluctuations();
-      }
-    }
-
-    // Start initially
-    startFluctuations();
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-
+    };
+    const onVis = () => (document.hidden ? stop() : start());
+    start();
+    document.addEventListener("visibilitychange", onVis);
     return () => {
-      stopFluctuations();
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      stop();
+      document.removeEventListener("visibilitychange", onVis);
     };
   }, [data]);
 
-  return {
-    metrics1: data, // full transformed API data
-    sentiments: fluctuated, // fake fluctuated values
-    isLoading1: loading,
-    error,
-    refetch: fetchData
-  };
+  return { metrics1: data, sentiments: fluctuated, isLoading1: loading, error, refetch: fetchData };
 }

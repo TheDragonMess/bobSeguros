@@ -20,14 +20,14 @@ export default function ({ mode }) {
     // Configure server in Vite
     server: {
       host: "0.0.0.0",
-      port: 5173
-      // proxy: {
-      //   "/api": {
-      //     target: "http://216.128.141.187:6000",
-      //     changeOrigin: true,
-      //     rewrite: (path) => path.replace(/^\/api/, "")
-      //   }
-      // }
+      port: 5173,
+      proxy: {
+        "/api": {
+          target: "http://216.128.141.187:6000",
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, "")
+        }
+      }
     },
     // Define the plugins to use in Vite
     plugins: [svgr(), react(), million.vite({ auto: true })],
