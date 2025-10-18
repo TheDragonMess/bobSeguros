@@ -1,6 +1,6 @@
 // src/hooks/useFetchApi.js
 import { useState, useEffect, useCallback, useRef } from "react";
-import { transformData } from "../useGetMetrics/transformData";
+import { transformData } from "hooks/useGetMetrics/transformData";
 import initialData from "../../data/initialData.json";
 import { config } from "../config";
 
