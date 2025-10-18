@@ -19,3 +19,4 @@
   ENV PORT=8080
   EXPOSE 8080
   CMD ["/usr/local/bin/entrypoint.sh"]
+  
