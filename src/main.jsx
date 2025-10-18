@@ -1,25 +1,29 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
+import "./styles.scss";
 
-// Load /config.js at runtime so window.__APP_CONFIG__ exists
 function loadRuntimeConfig() {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const s = document.createElement("script");
-    s.src = "/config.js";
-    s.async = true; // not a module; plain script
-    s.onload = () => resolve();
-    s.onerror = () => reject(new Error("Failed to load /config.js"));
+    s.src = "/config.js"; // served from /public in dev
+    s.async = true;
+    s.onload = () => resolve(true);
+    s.onerror = () => {
+      console.warn("Failed to load /config.js (continuing with defaults).");
+      resolve(false);
+    };
     document.head.appendChild(s);
   });
 }
 
-loadRuntimeConfig()
-  .catch((e) => {
-    console.warn(e.message);
-    // carry on without runtime config (use defaults)
-  })
-  .finally(() => {
-    const root = createRoot(document.getElementById("root"));
-    root.render(<App />);
-  });
+(async function start() {
+  await loadRuntimeConfig();
+  const rootEl = document.getElementById("root");
+  if (!rootEl) {
+    console.error('Missing <div id="root"></div> in index.html');
+    return;
+  }
+  const root = createRoot(rootEl);
+  root.render(<App />);
+})();

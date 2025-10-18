@@ -1,11 +1,14 @@
 // src/hooks/useFetchApi.js
 import { useState, useEffect, useCallback, useRef } from "react";
-import initialData from "data/initialData.json";
-import { transformData } from "hooks/useGetMetrics/transformData";
+import { transformData } from "./useGetMetrics/transformData";
+// (optional) if you want to fall back to initial data on errors, import it:
+// import initialData from "../data/initialData.json";
 
-const baseUrl = (typeof window !== "undefined" && window.__APP_CONFIG__?.API_URL) || "";
-const token =
-  tokenOverride || (typeof window !== "undefined" && window.__APP_CONFIG__?.API_TOKEN) || "";
+function readRuntime(key) {
+  return typeof window !== "undefined" && window.__APP_CONFIG__
+    ? window.__APP_CONFIG__[key] || ""
+    : "";
+}
 
 export default function useFetchApi(endpoint, tokenOverride, refreshInterval = 0) {
   const [data, setData] = useState(null);
@@ -13,24 +16,18 @@ export default function useFetchApi(endpoint, tokenOverride, refreshInterval = 0
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const baseUrl = (config && config.API_URL) || "";
-  const token = tokenOverride || (config && config.API_TOKEN) || "";
+  // ✅ compute inside the hook (so tokenOverride is in scope)
+  const baseUrl = readRuntime("API_URL");
+  const token = tokenOverride || readRuntime("API_TOKEN");
 
   const abortRef = useRef(null);
   const mountedRef = useRef(true);
 
-  const setFromInitial = () => {
-    const merged = { status: "success", data: initialData.data };
-    setData(merged);
-    setFluctuated(merged.data.moods || []);
-  };
-
   const fetchData = useCallback(async () => {
-    // If we don’t have base URL yet, just use initialData (no spinner forever)
+    // don’t crash if config/endpoint isn’t ready
     if (!endpoint || !baseUrl) {
-      setError(!endpoint ? "Missing endpoint" : "Missing API base URL");
       setLoading(false);
-      setFromInitial();
+      setError(!endpoint ? "Missing endpoint" : "Missing API base URL");
       return;
     }
 
@@ -53,20 +50,26 @@ export default function useFetchApi(endpoint, tokenOverride, refreshInterval = 0
       }
 
       const raw = await res.json();
-      // let transformData do its job (it already merges into initialData)
       const transformed = transformData(raw);
+      if (!mountedRef.current) return;
 
       setData(transformed);
       setFluctuated(transformed?.data?.moods || []);
     } catch (err) {
       if (err.name === "AbortError") return;
+      if (!mountedRef.current) return;
       setError(err.message || String(err));
-      setFromInitial(); // <- fallback to initialData on error
+
+      // Optional fallback:
+      // setData({ status: "success", data: initialData.data });
+      // setFluctuated(initialData.data.moods || []);
     } finally {
+      if (!mountedRef.current) return;
       setLoading(false);
     }
   }, [endpoint, baseUrl, token]);
 
+  // initial + polling
   useEffect(() => {
     mountedRef.current = true;
     fetchData();
@@ -79,25 +82,28 @@ export default function useFetchApi(endpoint, tokenOverride, refreshInterval = 0
     };
   }, [fetchData, refreshInterval]);
 
+  // moods fluctuation
   useEffect(() => {
     if (!data?.data?.moods) return;
     let id;
-    const tick = () => {
-      const src = data.data.moods;
-      if (!Array.isArray(src)) return;
-      const next = src.map((m) => {
-        const p = Number(m.percentage) || 0;
-        const pct = (Math.random() * (30 - 10) + 10) / 100;
-        const dir = Math.random() > 0.5 ? 1 : -1;
-        let np = Math.round(p + p * pct * dir);
-        if (np >= 100) np = 95 + Math.floor(Math.random() * 5);
-        if (np < 0) np = 0;
-        return { ...m, percentage: np };
-      });
-      setFluctuated(next);
-    };
     const start = () => {
-      if (!id) id = setInterval(tick, 1000);
+      if (!id) {
+        id = setInterval(() => {
+          const src = data.data.moods;
+          const next = Array.isArray(src)
+            ? src.map((m) => {
+                const p = Number(m.percentage) || 0;
+                const pct = (Math.random() * (30 - 10) + 10) / 100;
+                const dir = Math.random() > 0.5 ? 1 : -1;
+                let np = Math.round(p + p * pct * dir);
+                if (np >= 100) np = 95 + Math.floor(Math.random() * 5);
+                if (np < 0) np = 0;
+                return { ...m, percentage: np };
+              })
+            : [];
+          setFluctuated(next);
+        }, 1000);
+      }
     };
     const stop = () => {
       if (id) {
