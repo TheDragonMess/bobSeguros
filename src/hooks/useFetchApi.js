@@ -1,8 +1,11 @@
 // src/hooks/useFetchApi.js
 import { useState, useEffect, useCallback, useRef } from "react";
+import initialData from "data/initialData.json";
 import { transformData } from "hooks/useGetMetrics/transformData";
-import initialData from "../../data/initialData.json";
-import { config } from "../config";
+
+const baseUrl = (typeof window !== "undefined" && window.__APP_CONFIG__?.API_URL) || "";
+const token =
+  tokenOverride || (typeof window !== "undefined" && window.__APP_CONFIG__?.API_TOKEN) || "";
 
 export default function useFetchApi(endpoint, tokenOverride, refreshInterval = 0) {
   const [data, setData] = useState(null);
