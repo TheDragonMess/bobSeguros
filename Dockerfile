@@ -7,7 +7,7 @@
   RUN npm run build
   
   # --- Runtime stage (Caddy, non-root) ---
-  FROM caddy:2-bookworm
+  FROM caddy:2
   # App files
   COPY --from=build /app/dist /srv
   
