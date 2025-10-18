@@ -4,7 +4,7 @@ import mergedata from "../useGetMetrics/mergeData";
 
 export function transformData(data) {
   if (!data || !data.analytics) {
-    // If backend returns nothing useful, just surface initialData
+    // If backend returns nothing useful, just surface initialDatamodified
     return { status: "success", data: initialData.data };
   }
 
